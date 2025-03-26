@@ -11,5 +11,5 @@ app.use(cors());
 connectDb();
 
 app.listen(PORT, () => {
-  console.log('Products running in http://localhost:'+PORT + '/users');
+  console.log('Products running in http://localhost:'+PORT + '/userse');
 });
