@@ -37,6 +37,8 @@ class UsersService{
             }else{
                 return {status: 400, message : "User not created"}
             }
+        }catch(error){
+            return {status: 500, message : error}
         }
     }
 
