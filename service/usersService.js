@@ -42,4 +42,17 @@ class UsersService{
         }
     }
 
+    static async updateUser(id, user){
+        try{
+            const updatedUser = await Users.findByIdAndUpdate(id, user, {new: true})
+            if (updatedUser){
+                return {updatedUser}
+            }else{
+                return {status: 404, message : "User not found"}
+            }
+        }catch(error){
+            return {status: 500, message : error}
+        }
+    }
+
 }
