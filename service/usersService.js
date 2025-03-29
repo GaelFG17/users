@@ -15,14 +15,28 @@ class UsersService{
         }
     }
     
-    static async getUserByEmail(email){
+    static async getUserByEmailAndPwd(email, password){
         try{
-            const user = await Users.findOne({email:email})
+            const user = await Users.findOne({email:email, password:password})
             if (user){
                 return {user}
+            }else{
+                return {status: 404, message : "User not found"}
             }
         }catch(error){
             return {status: 500, message : error}
+        }
+    }
+
+    static async CreateUser(user){
+        try{
+            const newUser = new Users(user)
+            const savedUser = await newUser.save()
+            if (savedUser){
+                return savedUser
+            }else{
+                return {status: 400, message : "User not created"}
+            }
         }
     }
 
