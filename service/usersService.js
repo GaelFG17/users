@@ -14,5 +14,16 @@ class UsersService{
             return {status: 500, message : error}
         }
     }
+    
+    static async getUserByEmail(email){
+        try{
+            const user = await Users.findOne({email:email})
+            if (user){
+                return {user}
+            }
+        }catch(error){
+            return {status: 500, message : error}
+        }
+    }
 
 }
