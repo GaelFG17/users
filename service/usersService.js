@@ -55,6 +55,19 @@ class UsersService{
         }
     }
 
+    static async deleteUser(id){
+        try{
+            const deleteUser = await Users.findByIdAndUpdate(id, {status: 'inactive'}, {new: true})
+            if (deleteUser){
+                return {status: 200, message : "User deleted"}
+            }else{
+                return {status: 404, error : "User not found"}
+            }
+        }catch(error){
+            return {statusCode: 500, error : error}
+        }
+    }
+
 }
 
 module.exports = {UsersService}
