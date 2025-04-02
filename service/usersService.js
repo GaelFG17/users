@@ -19,12 +19,12 @@ class UsersService{
         try{
             const user = await Users.findOne({email:email, password:password})
             if (user){
-                return {user}
+                return {message: "User found"}
             }else{
-                return {status: 404, message : "User not found"}
+                return {status: 404, error : "User not found"}
             }
         }catch(error){
-            return {status: 500, message : error}
+            return {status: 500, error : error}
         }
     }
 
