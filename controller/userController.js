@@ -20,6 +20,4 @@ class UsersController{
             res.status(200).json(response.message)
         }
     }
-
-
 }
